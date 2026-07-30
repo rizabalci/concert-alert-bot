@@ -61,6 +61,54 @@ Every element is a tappable link. Vienna shows no travel section because you are
 6. Anything not yet on sale goes into a queue and gets a second alert the day tickets open
 7. Event IDs are saved to `seen.json` and committed back, so you never get the same show twice
 
+## Asking the bot on demand
+
+The daily digest tells you what is new. But when you want to know what is on right now, message the bot directly.
+
+```
+/vienna          what is on in Vienna
+/near            Vienna plus day trip cities
+/all             everything within your distance settings
+/week            next 7 days
+/month           next 30 days
+
+/jazz  /rock  /electronic  /classical
+/metal /folk  /world  /pop  /latin
+
+/watch Nils Frahm     always alert me, anywhere in Europe
+/unwatch Nils Frahm
+/list                 show the watchlist
+
+/scan            run the normal new-events scan
+/help            command list
+```
+
+Search commands ignore the seen list, so asking `/vienna` always gives you an answer rather than silence just because those events were reported last week.
+
+`/watch` writes to `watchlist_extra.json` and gets committed back, so additions survive between runs. You can build the watchlist from your phone as artists occur to you.
+
+### Response time
+
+The listener polls Telegram on a 15 minute cron, and GitHub often delays scheduled jobs by a few minutes under load. So expect an answer within about 20 minutes, not instantly.
+
+If you want instant, fire the workflow directly. Create a fine-grained personal access token with **Actions: read and write** on this repo, then:
+
+```bash
+curl -X POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  https://api.github.com/repos/rizabalci/concert-alert-bot/dispatches \
+  -d '{"event_type":"telegram_command"}'
+```
+
+Wrap that in an iOS Shortcut with a home screen icon and the flow becomes: type `/vienna` in Telegram, tap the shortcut, answer arrives in under a minute.
+
+The GitHub mobile app also works. Actions tab, pick the workflow, Run workflow.
+
+### A note on Actions minutes
+
+Polling every 15 minutes is about 96 runs a day. Public repos get unlimited Actions minutes so this is free. On a private repo you would blow through the 2000 minute monthly allowance, so either keep the repo public, or change the cron to `'*/30 * * * *'` and lean on the instant trigger when you actually want something.
+
 ## On-sale alerts
 
 Knowing about a show six months early is useless if you forget by the time tickets drop. When the bot finds an event that has not gone on sale yet, it shows the sale date instead of a buy link and quietly parks it in `pending.json`. The day the sale opens you get a second message:
@@ -116,7 +164,23 @@ Ticketmaster is the primary source and is strong for arenas and Western Europe. 
 
 Songkick is read from the public metro pages via their embedded structured data, so no API key is needed. If a page layout ever changes the scan fails quietly and Ticketmaster results still come through. Turn it off with `USE_SONGKICK = False`.
 
+All 26 cities have a Songkick metro mapped, so every city has at least one working source. This matters most for Lisbon, which Ticketmaster does not cover at all, and for Slovakia, Hungary, Slovenia and Croatia. Near cities are scanned three Songkick pages deep, far cities one page, since only major shows clear the distant score thresholds anyway.
+
 Metro IDs live in `songkick.py`. To add a city, search songkick.com and copy the number from the `/metro-areas/<id>-<slug>` URL.
+
+## Multi-night runs
+
+When an artist plays the same venue on consecutive nights, the alerts collapse them into one card with a date range instead of repeating near-identical entries:
+
+```
+⭐ Ólafur Arnalds
+   New Age / Neo-Classical
+   📅 Mon 12 Oct 2026 – Tue 13 Oct 2026 (2 nights)
+   📍 Cirque Royal, Brussels
+   🎫 €45-95 · Buy tickets
+```
+
+The price range spans all nights. Shows by the same artist with a gap between dates stay as separate cards, since those are genuinely different decisions.
 
 ## Weekend flags and calendar
 
@@ -248,14 +312,19 @@ Ticketmaster has strong coverage in Austria, Germany, Netherlands, Belgium, Spai
 
 ```
 concert-alert-bot/
-├── concert_bot.py                  # main script
+├── concert_bot.py                  # daily scan
+├── commands.py                     # Telegram command listener
 ├── config.py                       # cities, watchlist, scoring, genres
 ├── travel.py                       # train / bus / flight / hotel links per city
 ├── songkick.py                     # second source for club shows and SK/HU
 ├── pending.json                    # events waiting for their on-sale date
+├── tg_offset.json                  # last handled Telegram message
+├── watchlist_extra.json            # artists added with /watch
 ├── requirements.txt
 ├── seen.json                       # state, auto committed by the workflow
-└── .github/workflows/concerts.yml  # daily cron
+└── .github/workflows/
+    ├── concerts.yml                # daily digest
+    └── commands.yml                # command listener
 ```
 
 ## Author

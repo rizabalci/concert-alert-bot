@@ -254,9 +254,20 @@ def passes_genre_filter(e):
     return any(g.lower() in blob for g in GENRE_FILTER)
 
 
+def _all_watchlist():
+    """Config watchlist plus anything added from Telegram with /watch."""
+    extra = []
+    try:
+        with open("watchlist_extra.json", "r", encoding="utf-8") as f:
+            extra = json.load(f).get("artists", [])
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+    return list(WATCHLIST) + extra
+
+
 def on_watchlist(e):
-    blob = f"{e['name']} {e['artist']}".lower()
-    return any(w.lower() in blob for w in WATCHLIST)
+    blob = f"{e.get('name','')} {e.get('artist','')}".lower()
+    return any(w.lower() in blob for w in _all_watchlist())
 
 
 def score_event(e):
@@ -476,9 +487,13 @@ def format_event(e, onsale_banner=False):
     if e.get("support"):
         out += f"   with {esc(', '.join(e['support']))}\n"
 
-    when = [fmt_date(e["date"])]
-    if e.get("time"):
-        when.append(e["time"][:5])
+    if e.get("date_end"):
+        d1, d2 = fmt_date(e["date"]), fmt_date(e["date_end"])
+        when = [f"{d1} – {d2} ({e.get('nights', 2)} nights)"]
+    else:
+        when = [fmt_date(e["date"])]
+        if e.get("time"):
+            when.append(e["time"][:5])
     weekend = " 🎉 <i>weekend</i>" if (SHOW_WEEKEND_FLAG and is_weekend(e)) else ""
     out += f"   📅 {' · '.join(when)}{weekend}\n"
 
@@ -521,7 +536,62 @@ def format_event(e, onsale_banner=False):
     return out
 
 
+def collapse_runs(events):
+    """
+    Merge multi-night runs: same artist, same venue, same city, on consecutive
+    dates become one card with a date range. Keeps the earliest event as the
+    base and records the last night in date_end.
+    """
+    def key(e):
+        return (
+            (e.get("artist") or e.get("name") or "").lower().strip(),
+            (e.get("venue") or "").lower().strip(),
+            e.get("city", ""),
+        )
+
+    groups = {}
+    for e in events:
+        groups.setdefault(key(e), []).append(e)
+
+    out = []
+    for _, evs in groups.items():
+        evs.sort(key=lambda x: x.get("date", ""))
+        run = [evs[0]]
+        for e in evs[1:]:
+            try:
+                prev = datetime.strptime(run[-1]["date"], "%Y-%m-%d").date()
+                cur = datetime.strptime(e["date"], "%Y-%m-%d").date()
+            except (ValueError, TypeError):
+                out.extend(_finish_run(run))
+                run = [e]
+                continue
+            if (cur - prev).days == 1:
+                run.append(e)
+            else:
+                out.extend(_finish_run(run))
+                run = [e]
+        out.extend(_finish_run(run))
+    return out
+
+
+def _finish_run(run):
+    if len(run) == 1:
+        return run
+    base = dict(run[0])
+    base["date_end"] = run[-1]["date"]
+    base["nights"] = len(run)
+    # widest price range across the nights
+    lows = [e["min_price"] for e in run if e.get("min_price") is not None]
+    highs = [e["max_price"] for e in run if e.get("max_price") is not None]
+    if lows:
+        base["min_price"] = min(lows)
+    if highs:
+        base["max_price"] = max(highs)
+    return [base]
+
+
 def build_messages(events, header_text=None, onsale_banner=False):
+    events = collapse_runs(events)
     by_city = {}
     for e in events:
         by_city.setdefault(e["city"], []).append(e)
@@ -664,7 +734,15 @@ def main():
 
         if USE_SONGKICK:
             try:
-                sk_raw = songkick.fetch_city_events(city["name"])
+                # Vienna deepest, near cities deep, far cities one page since
+                # only major shows clear their score threshold anyway.
+                if city["name"] == "Vienna":
+                    pages = 6
+                elif city["priority"] <= 1:
+                    pages = 3
+                else:
+                    pages = 1
+                sk_raw = songkick.fetch_city_events(city["name"], max_pages=pages)
                 for r in sk_raw:
                     n = songkick.normalise(r, city)
                     if n:

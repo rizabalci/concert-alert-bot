@@ -170,7 +170,7 @@ STAY_NIGHTS = 1            # nights booked, checkout is this many days later
 PASS_VENUES = {
     "musikverein": {
         "label": "You have the yearly pass",
-        "program_url": "https://www.musikverein.at/programm",
+        "program_url": "https://www.musikverein.at/konzerte",
     },
 }
 
