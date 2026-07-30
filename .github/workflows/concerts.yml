@@ -1,0 +1,46 @@
+name: Concert Alerts
+
+on:
+  schedule:
+    # 08:00 Vienna time (07:00 UTC in summer, 06:00 UTC would be winter).
+    # Runs every day. Change to e.g. '0 7 * * 1' for Mondays only.
+    - cron: '0 6 * * *'
+  workflow_dispatch:        # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write           # needed so the bot can commit seen.json back
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run concert scan
+        env:
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python concert_bot.py
+
+      - name: Commit seen state
+        run: |
+          git config user.name  "concert-bot"
+          git config user.email "actions@github.com"
+          git add seen.json pending.json
+          if git diff --staged --quiet; then
+            echo "No state change."
+          else
+            git commit -m "Update seen events [skip ci]"
+            git push
+          fi
