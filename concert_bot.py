@@ -381,6 +381,27 @@ def calendar_link(e):
     )
 
 
+def whatsapp_link(e):
+    """wa.me share link with a compact event summary prefilled."""
+    lines = [f"🎸 {e.get('name','')}"]
+    d = fmt_date(e.get("date", ""))
+    if e.get("date_end"):
+        d = f"{d} – {fmt_date(e['date_end'])}"
+    if e.get("time") and not e.get("date_end"):
+        d += f" · {e['time'][:5]}"
+    lines.append(f"📅 {d}")
+    where = e.get("venue", "")
+    city = e.get("venue_city") or e.get("city", "")
+    if city and city not in where:
+        where = f"{where}, {city}" if where else city
+    if where:
+        lines.append(f"📍 {where}")
+    if e.get("url"):
+        lines.append(f"🎫 {e['url']}")
+    text = "\n".join(lines)
+    return f"https://wa.me/?text={quote(text)}"
+
+
 def esc(t):
     return html.escape(t or "")
 
@@ -529,6 +550,7 @@ def format_event(e, onsale_banner=False):
         cal = calendar_link(e)
         if cal:
             extras.append(link("Add to calendar", cal))
+    extras.append(link("Share", whatsapp_link(e)))
     out += "   🎧 " + " · ".join(extras) + "\n"
 
     out += travel_block(e)
