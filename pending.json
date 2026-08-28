@@ -1,4 +1,34 @@
 {
- "updated": "2026-08-27T17:34:57.395814+00:00",
- "events": []
+ "updated": "2026-08-28T18:32:29.093432+00:00",
+ "events": [
+  {
+   "id": "Z698xZ5rZ16vxb77OM",
+   "onsale": "2026-09-03T08:00:00Z",
+   "source": "ticketmaster",
+   "name": "D-Block Europe & French Montana - Worldwide Wave Tour",
+   "artist": "D-Block Europe",
+   "support": [],
+   "date": "2026-11-06",
+   "time": "20:00:00",
+   "venue": "Raiffeisen Halle im Gasometer",
+   "venue_city": "Vienna",
+   "genre": "Hip-Hop/Rap",
+   "subgenre": "Rap-Rock",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/d-block-europe--french-montana-worldwide-wave-tour-tickets/1898104837?language=en-us",
+   "spotify": "https://open.spotify.com/search/D-Block%20Europe",
+   "youtube": "https://www.youtube.com/results?search_query=D-Block%20Europe",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 69,
+   "reasons": [
+    "major venue"
+   ]
+  }
+ ]
 }
