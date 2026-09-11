@@ -1,4 +1,32 @@
 {
- "updated": "2026-09-10T11:07:56.013067+00:00",
- "events": []
+ "updated": "2026-09-11T11:06:30.714420+00:00",
+ "events": [
+  {
+   "id": "Z698xZ5rZ16evg4_JA",
+   "onsale": "2026-09-17T09:00:00Z",
+   "source": "ticketmaster",
+   "name": "ridgeclub - Europe 2026",
+   "artist": "ridgeclub",
+   "support": [],
+   "date": "2026-11-09",
+   "time": "20:00:00",
+   "venue": "",
+   "venue_city": "Vienna",
+   "genre": "Blues",
+   "subgenre": "Jazz Blues",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/ridgeclub-europe-2026-tickets/2075559985?language=en-us",
+   "spotify": "https://open.spotify.com/artist/4MT74NV1GnOKWtwpEVRRu1",
+   "youtube": "https://www.youtube.com/results?search_query=ridgeclub",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 52,
+   "reasons": []
+  }
+ ]
 }
