@@ -1,32 +1,4 @@
 {
- "updated": "2026-09-23T11:22:40.408125+00:00",
- "events": [
-  {
-   "id": "Z698xZ5rZ16vbV7Exp",
-   "onsale": "2026-09-25T09:00:00Z",
-   "source": "ticketmaster",
-   "name": "NAFT",
-   "artist": "NAFT",
-   "support": [],
-   "date": "2027-04-02",
-   "time": "20:00:00",
-   "venue": "",
-   "venue_city": "Vienna",
-   "genre": "Dance/Electronic",
-   "subgenre": "Dance/Electronic",
-   "program": "doors: 7 pm show: 8 pm",
-   "min_price": null,
-   "max_price": null,
-   "currency": "",
-   "url": "https://www.ticketmaster.at/event/naft-tickets/1634127896?language=en-us",
-   "spotify": "https://open.spotify.com/search/NAFT",
-   "youtube": "https://www.youtube.com/results?search_query=NAFT",
-   "city": "Vienna",
-   "city_emoji": "🏠",
-   "km": 0,
-   "priority": 0,
-   "score": 46,
-   "reasons": []
-  }
- ]
+ "updated": "2026-09-24T11:34:39.042436+00:00",
+ "events": []
 }
