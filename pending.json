@@ -1,4 +1,36 @@
 {
- "updated": "2026-10-01T13:00:00.376828+00:00",
- "events": []
+ "updated": "2026-10-02T12:22:09.896749+00:00",
+ "events": [
+  {
+   "id": "Z698xZC2Z16v70efZ3",
+   "onsale": "2026-10-09T08:00:00Z",
+   "source": "ticketmaster",
+   "name": "Greta Van Fleet - Into The Beginning",
+   "artist": "Greta Van Fleet",
+   "support": [
+    "Larkin Poe"
+   ],
+   "date": "2027-05-15",
+   "time": "20:00:00",
+   "venue": "Olympiahalle",
+   "venue_city": "Munich",
+   "genre": "Rock",
+   "subgenre": "Pop",
+   "program": "Presented by Live Nation Children under the age of 6 are not permitted entry. Children and young people aged between 6 and 13 may only enter if accompanied by a parent or legal...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.de/event/greta-van-fleet-into-the-beginning-tickets/1124094012?language=en-us",
+   "spotify": "https://open.spotify.com/artist/4NpFxQe2UvRCAjto3JqlSl",
+   "youtube": "https://www.youtube.com/channel/UCX2_tsfS1lWaNg26UUuWrxA",
+   "city": "Munich",
+   "city_emoji": "🚆",
+   "km": 360,
+   "priority": 1,
+   "score": 29,
+   "reasons": [
+    "major venue"
+   ]
+  }
+ ]
 }
