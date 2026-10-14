@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13T14:02:44.364317+00:00",
+ "updated": "2026-10-14T11:39:20.675243+00:00",
  "events": [
   {
    "id": "Z698xZ5rZ16vZ489ev",
@@ -62,6 +62,33 @@
    "reasons": [
     "major venue"
    ]
+  },
+  {
+   "id": "Z698xZ5rZ16va-Q87w",
+   "onsale": "2026-10-16T08:00:00Z",
+   "source": "ticketmaster",
+   "name": "De Staat - EU Tour 2027",
+   "artist": "De Staat",
+   "support": [],
+   "date": "2027-03-15",
+   "time": "20:30:00",
+   "venue": "Szene",
+   "venue_city": "Vienna",
+   "genre": "Rock",
+   "subgenre": "Pop",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/de-staat-eu-tour-2027-tickets/1261690132?language=en-us",
+   "spotify": "https://open.spotify.com/artist/4rZJKub3qA5t1yYcT3qmm4",
+   "youtube": "http://www.youtube.com/destaatofficial",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 44,
+   "reasons": []
   }
  ]
 }
