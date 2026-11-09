@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T13:12:01.437181+00:00",
+ "updated": "2026-11-09T15:58:06.332848+00:00",
  "events": [
   {
    "id": "Z698xZ5rZ16v-afaZV",
@@ -27,6 +27,35 @@
    "priority": 0,
    "score": 44,
    "reasons": []
+  },
+  {
+   "id": "Z698xZq2Z1kokjUbb",
+   "onsale": "2026-11-10T09:00:00Z",
+   "source": "ticketmaster",
+   "name": "Simple Music Ensemble. A Tribute to Ludovico Einaudi",
+   "artist": "Simple Music Ensemble World",
+   "support": [],
+   "date": "2027-02-20",
+   "time": "19:00:00",
+   "venue": "UusiTeatteri",
+   "venue_city": "Stockholm",
+   "genre": "Other",
+   "subgenre": "Other",
+   "program": "A Tribute to Ludovico Einaudi --- An Evening of Contemporary Piano Music Discover the captivating musical world of Ludovico Einaudi in an intimate concert performed by Simple...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.se/event/simple-music-ensemble-a-tribute-to-ludovico-einaudi-tickets/446736618?language=en-us",
+   "spotify": "https://open.spotify.com/search/Simple%20Music%20Ensemble%20World",
+   "youtube": "https://www.youtube.com/results?search_query=Simple%20Music%20Ensemble%20World",
+   "city": "Stockholm",
+   "city_emoji": "✈️",
+   "km": 1580,
+   "priority": 3,
+   "score": 476,
+   "reasons": [
+    "watchlist"
+   ]
   }
  ]
 }
