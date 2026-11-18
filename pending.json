@@ -1,32 +1,4 @@
 {
- "updated": "2026-11-17T15:52:01.674327+00:00",
- "events": [
-  {
-   "id": "Z698xZ5rZ16vOFPore",
-   "onsale": "2026-11-19T14:00:00Z",
-   "source": "ticketmaster",
-   "name": "Stray Kids World Tour [RUN IT VIENNA]",
-   "artist": "Stray Kids",
-   "support": [],
-   "date": "2027-07-21",
-   "time": "19:30:00",
-   "venue": "Ernst-Happel-Stadion",
-   "venue_city": "Vienna",
-   "genre": "Rock",
-   "subgenre": "Pop",
-   "program": "Presented by Live Nation Visitors under the age of 16 may only enter if accompanied by a parent, guardian or person with parental authority (at least 18 years old). No...",
-   "min_price": null,
-   "max_price": null,
-   "currency": "",
-   "url": "https://www.ticketmaster.at/event/stray-kids-world-tour-run-it-vienna-tickets/1808951782?language=en-us",
-   "spotify": "https://open.spotify.com/artist/2dIgFjalVxs4ThymZ67YCE?autoplay=true",
-   "youtube": "https://www.youtube.com/c/StrayKids",
-   "city": "Vienna",
-   "city_emoji": "🏠",
-   "km": 0,
-   "priority": 0,
-   "score": 44,
-   "reasons": []
-  }
- ]
+ "updated": "2026-11-18T15:30:23.865246+00:00",
+ "events": []
 }
