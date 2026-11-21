@@ -1,4 +1,32 @@
 {
- "updated": "2026-11-20T15:17:55.193730+00:00",
- "events": []
+ "updated": "2026-11-21T14:31:18.255288+00:00",
+ "events": [
+  {
+   "id": "Z698xZ5rZ1ko0GIAO",
+   "onsale": "2026-11-27T11:00:00Z",
+   "source": "ticketmaster",
+   "name": "Odetari",
+   "artist": "Odetari",
+   "support": [],
+   "date": "2027-02-16",
+   "time": "20:00:00",
+   "venue": "Ottakringer Brauerei",
+   "venue_city": "Vienna",
+   "genre": "Hip-Hop/Rap",
+   "subgenre": "Hip-Hop/Rap",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/odetari-tickets/464328160?language=en-us",
+   "spotify": "https://open.spotify.com/search/Odetari",
+   "youtube": "https://www.youtube.com/results?search_query=Odetari",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 40,
+   "reasons": []
+  }
+ ]
 }
