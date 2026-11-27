@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T16:45:07.389789+00:00",
+ "updated": "2026-11-27T16:30:27.599978+00:00",
  "events": [
   {
    "id": "Z698xZ5rZ16vqMp3OP",
@@ -62,6 +62,60 @@
    "reasons": [
     "major venue"
    ]
+  },
+  {
+   "id": "Z698xZ5rZ1k0EFdvI",
+   "onsale": "2026-12-04T11:00:00Z",
+   "source": "ticketmaster",
+   "name": "Backstreet Boys: Into The Millennium - Homecoming",
+   "artist": "Backstreet Boys",
+   "support": [],
+   "date": "2027-06-24",
+   "time": "20:00:00",
+   "venue": "Ernst-Happel-Stadion",
+   "venue_city": "Vienna",
+   "genre": "Rock",
+   "subgenre": "Pop",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/backstreet-boys-into-the-millennium-homecoming-tickets/927203068?language=en-us",
+   "spotify": "https://open.spotify.com/artist/5rSXSAkZ67PYJSvpUpkOr7",
+   "youtube": "https://www.youtube.com/user/bsbofficial",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 44,
+   "reasons": []
+  },
+  {
+   "id": "Z698xZ5rZ16voS_wa7",
+   "onsale": "2026-12-04T11:00:00Z",
+   "source": "ticketmaster",
+   "name": "Backstreet Boys: Into The Millennium - Homecoming",
+   "artist": "Backstreet Boys",
+   "support": [],
+   "date": "2027-06-25",
+   "time": "20:00:00",
+   "venue": "Ernst-Happel-Stadion",
+   "venue_city": "Vienna",
+   "genre": "Rock",
+   "subgenre": "Pop",
+   "program": "Presented by Live Nation Accessible and wheelchair tickets can be purchased by using our special contact form via this Link or by contacting our hotline at +49 (0)30 - 40 818...",
+   "min_price": null,
+   "max_price": null,
+   "currency": "",
+   "url": "https://www.ticketmaster.at/event/backstreet-boys-into-the-millennium-homecoming-tickets/1473672244?language=en-us",
+   "spotify": "https://open.spotify.com/artist/5rSXSAkZ67PYJSvpUpkOr7",
+   "youtube": "https://www.youtube.com/user/bsbofficial",
+   "city": "Vienna",
+   "city_emoji": "🏠",
+   "km": 0,
+   "priority": 0,
+   "score": 44,
+   "reasons": []
   }
  ]
 }
